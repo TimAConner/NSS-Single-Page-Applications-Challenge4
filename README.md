@@ -32,3 +32,7 @@ Example of an API call to get a 5-day forecast for 37201
 1. git checkout -b myBranchName
 1. Run npm install
 1. Add Gruntfile.js 
+
+## Non NPM Sources Used
+1. http://openweathermap.org
+1. https://www.amcharts.com/free-animated-svg-weather-icons/
