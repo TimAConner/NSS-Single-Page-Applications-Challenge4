@@ -29,7 +29,7 @@ module.exports = function(grunt){
             }
         },
         browserify: {
-            'dist/main.js': ['js/main.js']
+            'dist/bundle.js': ['js/main.js']
         }
     });
 
