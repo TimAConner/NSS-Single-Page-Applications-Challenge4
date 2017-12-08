@@ -5,13 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Single Page Applications Challenge 4</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-    <h1>Challenge 4</h1>
+
     <main>
-        
+        <div class="container">
+            <h1 class="text-center">Challenge 4</h1>
+            <div id="output">
+                    <div class="card" style="width: 20rem;">
+                        <!-- Weather Animations from https://www.amcharts.com/free-animated-svg-weather-icons/-->
+                        <img class="card-img-top" src="img/weather-icons/animated/cloudy-day-1.svg" alt="Card image cap">
+                        <div class="card-body">
+                            <div class="temp-grid-box">
+                                <div>
+                                    <h4 class="card-title" id="title">Card title</h4>
+                                    <p class="card-text" id="description">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                </div>
+                                <p class="card-text h4" id="temp">TEMP</p>
+                            </div>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <div>
+                                <li class="list-group-item flex-temps"><span>Low <span class="font-weight-bold" id="low">Dapibus ac facilisis in</span></span> <span> High <span class="font-weight-bold" id="high"></span></span></li>
+                            </div>
+                            <li class="list-group-item flex-temps">
+                                <span><img class="small-image" src="img/rain-drop.svg" alt="Rain drop">
+                            <span id="humidity"></span></span>
+                            <span><img class="small-image" src="img/temperature.svg" alt="Pressure gauge"><span id="pressure"></span></span></li>
+                        </ul>
+                        <!-- <div class="card-body">
+                            <a href="#" class="card-link">Card link</a>
+                            <a href="#" class="card-link">Another link</a>
+                        </div> -->
+                    </div>
+            </div>
+            <footer>
+                Rain drop <a href="https://www.flaticon.com/authors/good-ware">Good-Ware</a> from www.flaticon.com 
+            </footer>
+        </div>
     </main>
     <script src="dist/bundle.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 </body>
 </html>
