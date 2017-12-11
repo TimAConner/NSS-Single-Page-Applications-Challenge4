@@ -2,5 +2,5 @@
 
 let controller = require('./controller');
 // controller.createWeatherCard();
-controller.hideAlert();
+controller.initalizePage();
 controller.activateDropdown();  

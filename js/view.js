@@ -1,5 +1,21 @@
 "use strict";
 
+module.exports.showAlert = () => {
+    $(".alert").show();
+};
+
+module.exports.hideAlert = () => {
+    $(".alert").hide();
+};
+
+module.exports.hideOutput = () => {
+    $("#output").hide();
+};
+
+const showOutput = () => {
+    $("#output").show();
+};
+
 module.exports.showWeather = (data) => {
     let output = document.getElementById("output");
     document.getElementById("title").textContent = data.title;
@@ -34,11 +50,10 @@ module.exports.showWeather = (data) => {
 
     document.getElementById("humidity").textContent = `${data.humidity}`;
     document.getElementById("pressure").textContent = `${data.pressure}`;
+
+    showOutput();
 };
 
-const createTable = () => {
-
-};
 
 const createImg = (src) => {
     let img = document.createElement("img");
@@ -47,12 +62,6 @@ const createImg = (src) => {
 };
 
 
-module.exports.showAlert = () => {
-    $(".alert").show();
-};
 
-module.exports.hideAlert = () => {
-    $(".alert").hide();
-};
 
 /* Weather SVG Icons From: https://www.amcharts.com/free-animated-svg-weather-icons */

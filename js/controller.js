@@ -38,7 +38,6 @@ const createWeatherCard = (city, state, type) => {
                     pressure: observationData.pressurei
                 };
             } else if (type === "forecast-hourly"){
-                console.log(data);
                 let observationData = data[0].hourly_forecast[0];
                 weather = {
                     title: `Hourly in ${city}`,
@@ -58,17 +57,21 @@ const capitalizeFirstLetter = (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
 };
 
+const capitalize = (string) => {
+    return string.toUpperCase();
+};
+
 module.exports.activateDropdown = () => { 
     let dropdown = document.querySelector("#dropdown-menu");
     dropdown.addEventListener("click", () => {
         document.getElementById("forecast-default").textContent = event.target.textContent;
 
         let location = document.getElementById("location").value;
-        let locationRegex = new RegExp('(.*), ([A-Z]{2})');
+        let locationRegex = new RegExp('(.*), ([A-Z]{2}|[a-z]{2})');
         let match = location.match(locationRegex);
         if(match){
             if(event.target.id === "forecast-current" || event.target.id === "forecast-hourly" || event.target.id === "forecast-yesterday"){
-                createWeatherCard(match[1], match[2], event.target.id);
+                createWeatherCard(capitalizeFirstLetter(match[1]), capitalize(match[2]), event.target.id);
             }
            
         } else {
@@ -80,6 +83,8 @@ module.exports.activateDropdown = () => {
     
 };
 
-module.exports.hideAlert = () => {
+
+module.exports.initalizePage = () => {
     weatherView.hideAlert();   
+    weatherView.hideOutput();
 };
