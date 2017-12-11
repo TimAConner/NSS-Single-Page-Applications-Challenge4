@@ -16,7 +16,7 @@
 //     return x => forecastOptions
 // }
 
-module.exports.getCurrentWeather = (state, city) => {
+module.exports.getCurrentWeather = (city, state) => {
 
     return new Promise(function (resolve, reject) {
         let apiKey = loadData("../js/apiKey.json").then(data => {
@@ -31,13 +31,28 @@ module.exports.getCurrentWeather = (state, city) => {
     });
 };
 
-module.exports.getYesterdayWeather = (state, city) => {
+module.exports.getYesterdayWeather = (city, state) => {
     return new Promise(function (resolve, reject) {
         let apiKey = loadData("../js/apiKey.json").then(data => {
             let key = data.key; 
-            let tenDayForecast = loadData(`http://api.wunderground.com/api/${key}/history_19991002/q/${state}/${city}.json`);
 
-            Promise.all([tenDayForecast]).then(data => {
+            // Need to set yesterday as date
+            let yesterdayForecast = loadData(`http://api.wunderground.com/api/${key}/history_19991002/q/${state}/${city}.json`);
+
+            Promise.all([yesterdayForecast]).then(data => {
+                resolve(data);
+            });
+        });
+    });
+};
+
+module.exports.getHourlyWeather = (city, state) => {
+    return new Promise(function (resolve, reject) {
+        let apiKey = loadData("../js/apiKey.json").then(data => {
+            let key = data.key; 
+            let hourlyForecast = loadData(`http://api.wunderground.com/api/${key}/hourly/q/${state}/${city}.json`);
+
+            Promise.all([hourlyForecast]).then(data => {
                 resolve(data);
             });
         });

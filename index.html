@@ -19,9 +19,9 @@
                     <button id="forecast-default" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Forecast
                     </button>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" id="forecast-current" href="#">Current</a>
-                        <a class="dropdown-item" id="forecast-3-day" href="#">3 Day</a>
+                      <div class="dropdown-menu">
+                        <a class="dropdown-item" id="forecast-current" href="#">Today</a>
+                        <a class="dropdown-item" id="forecast-hourly" href="#">Hourly</a>
                         <a class="dropdown-item" id="forecast-yesterday" href="#">Yesterday</a>
                     </div>
                 </div>  
@@ -37,12 +37,13 @@
                         <!-- Weather Animations from https://www.amcharts.com/free-animated-svg-weather-icons/-->
                         <img id="weather-image" src="" class="card-img-top" alt="Card image cap">
                         <div class="card-body">
+                            <h4 class="card-title text-center" id="title">Card title</h4>
                             <div class="temp-grid-box">
                                 <div>
-                                    <h4 class="card-title" id="title">Card title</h4>
-                                    <p class="card-text" id="description">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    <h4 class="card-title" id="weather-summary">Card title</h4>
+                                    <p class="card-titles" id="description">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                                 </div>
-                                <p class="card-text h4" id="temp">TEMP</p>
+                                <p class="card-title h4" id="temp">TEMP</p>
                             </div>
                         </div>
                         <ul class="list-group list-group-flush">

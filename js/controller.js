@@ -12,7 +12,8 @@ const createWeatherCard = (city, state) => {
             let forecastData = data[0].forecast.simpleforecast.forecastday[0];
             let conditionData = data[1].current_observation;
             let weather = {
-                title: forecastData.conditions,
+                title: `Today in ${city}`,
+                summary: forecastData.conditions,
                 img: forecastData.icon,
                 // desc: capitalizeFirstLetter(data.list[0].weather[0].description),
                 high: forecastData.high.fahrenheit,
@@ -35,7 +36,8 @@ const createYesterdayWeatherCard = (city, state) => {
             weatherView.hideAlert();
             let observationData = data[0].history.observations[0];
             let weather = {
-                title: observationData.conds,
+                title: `Yesterday in ${city}`,
+                summary: observationData.conds,
                 img: observationData.icon,
                 high: observationData.tempi,
                 low: observationData.tempm,
@@ -48,6 +50,27 @@ const createYesterdayWeatherCard = (city, state) => {
     });  
 };
 
+
+const createHourlyWeatherCard = (city, state) => {
+    weatherLoader.getHourlyWeather(city, state).then(data => {
+        console.log(data);
+        if(data[0].response.hasOwnProperty("error")){
+            weatherView.showAlert();
+        } else {
+            weatherView.hideAlert();
+            let observationData = data[0].hourly_forecast[0];
+            let weather = {
+                title: `Hourly in ${city}`,
+                summary: observationData.condition,
+                img: observationData.icon,
+                temp: observationData.temp.english,
+                humidity: observationData.humidity,
+                pressure: observationData.mslp.english
+            };
+            weatherView.showWeather(weather);
+        }
+    });  
+};
 
 const capitalizeFirstLetter = (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
@@ -62,7 +85,7 @@ module.exports.activateDropdown = () => {
             let locationRegex = new RegExp('(.*), ([A-Z]{2})');
             let match = location.match(locationRegex);
             if(match){
-                createWeatherCard(match[2], match[1]);
+                createWeatherCard(match[1], match[2]);
             } else {
                 weatherView.showAlert();
             }
@@ -71,7 +94,17 @@ module.exports.activateDropdown = () => {
             let locationRegex = new RegExp('(.*), ([A-Z]{2})');
             let match = location.match(locationRegex);
             if(match){
-                createYesterdayWeatherCard(match[2], match[1]);
+                createYesterdayWeatherCard(match[1], match[2]);
+            } else {
+                weatherView.showAlert();
+            }
+        }
+        else if (event.target.id === "forecast-hourly"){
+            let location = document.getElementById("location").value;
+            let locationRegex = new RegExp('(.*), ([A-Z]{2})');
+            let match = location.match(locationRegex);
+            if(match){
+                createHourlyWeatherCard(match[1], match[2]);
             } else {
                 weatherView.showAlert();
             }

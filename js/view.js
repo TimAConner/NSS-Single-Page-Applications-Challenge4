@@ -2,9 +2,9 @@
 
 module.exports.showWeather = (data) => {
     let output = document.getElementById("output");
-    
-    document.getElementById("weather-image").src = `img/weather-icons/animated/${data.img}.svg`;    
     document.getElementById("title").textContent = data.title;
+    document.getElementById("weather-image").src = `img/weather-icons/animated/${data.img}.svg`;    
+    document.getElementById("weather-summary").textContent = data.summary;
     document.getElementById("description").textContent = data.desc;
     document.getElementById("temp").textContent = `${data.temp}F`;
     document.getElementById("low").textContent = `${data.low}F`;
