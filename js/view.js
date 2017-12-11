@@ -7,8 +7,31 @@ module.exports.showWeather = (data) => {
     document.getElementById("weather-summary").textContent = data.summary;
     document.getElementById("description").textContent = data.desc;
     document.getElementById("temp").textContent = `${data.temp}F`;
-    document.getElementById("low").textContent = `${data.low}F`;
-    document.getElementById("high").textContent = `${data.high}F`;
+
+    if(data.low !== undefined){
+        document.getElementById("low").innerHTML = "";
+        let tempLowSpan = document.createElement("span");
+        tempLowSpan.setAttribute("class", "font-weight-bold");
+        tempLowSpan.textContent = `${data.low}F`;
+        let tempLowText = document.createTextNode("Low ");
+        document.getElementById("low").appendChild(tempLowText);
+        document.getElementById("low").appendChild(tempLowSpan);
+    } else {
+        document.getElementById("low").innerHTML = "";
+    }
+
+    if(data.high !== undefined){    
+        document.getElementById("high").innerHTML = "";
+        let tempHighSpan = document.createElement("span");
+        tempHighSpan.setAttribute("class", "font-weight-bold");
+        tempHighSpan.textContent = `${data.high}F`;
+        let tempHighText = document.createTextNode("High ");
+        document.getElementById("high").appendChild(tempHighText);
+        document.getElementById("high").appendChild(tempHighSpan);
+    } else {
+        document.getElementById("high").innerHTML = "";
+    }
+
     document.getElementById("humidity").textContent = `${data.humidity}`;
     document.getElementById("pressure").textContent = `${data.pressure}`;
 };
