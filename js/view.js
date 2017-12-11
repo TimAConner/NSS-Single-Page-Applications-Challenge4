@@ -2,10 +2,7 @@
 
 module.exports.showWeather = (data) => {
     let output = document.getElementById("output");
-
-    /* jshint ignore:start */
-    // console.log(data);
-    /* jshint ignore:end */
+    
     document.getElementById("weather-image").src = `img/weather-icons/animated/${data.img}.svg`;    
     document.getElementById("title").textContent = data.title;
     document.getElementById("description").textContent = data.desc;
@@ -26,5 +23,13 @@ const createImg = (src) => {
     return img;
 };
 
+
+module.exports.showAlert = () => {
+    $(".alert").show();
+};
+
+module.exports.hideAlert = () => {
+    $(".alert").hide();
+};
 
 /* Weather SVG Icons From: https://www.amcharts.com/free-animated-svg-weather-icons */

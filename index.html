@@ -12,8 +12,8 @@
 
     <main>
         <div class="container">
-            <h1 class="text-center">Challenge 4</h1>
-            <div class="input-group w-50">
+            <h1 class="text-center">Open Weather API - Challenge #4</h1>
+            <div class="input-group">
                 <input type="text" class="form-control" placeholder="Nashville, TN" id="location" aria-label="Location" aria-describedby="basic-addon1">
                 <div class="input-group-btn" id="dropdown-menu">
                     <button id="forecast-default" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -24,12 +24,15 @@
                         <a class="dropdown-item" id="forecast-3-day" href="#">3 Day</a>
                         <a class="dropdown-item" id="forecast-16-day" href="#">16 Day</a>
                     </div>
-                </div>
+                </div>  
                 <!-- <span class="input-group-btn">
                     <button class="btn btn-secondary" type="button">Go!</button>
                 </span> -->
             </div>
-            <div id="output">
+
+            <div class="alert alert-warning mt-2" role="alert">City data not found.</div>
+
+            <div id="output" class="mt-4">
                     <div class="card" style="width: 20rem;">
                         <!-- Weather Animations from https://www.amcharts.com/free-animated-svg-weather-icons/-->
                         <img id="weather-image" src="" class="card-img-top" alt="Card image cap">
@@ -64,9 +67,9 @@
             </footer>
         </div>
     </main>
-    <script src="dist/bundle.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <script src="dist/bundle.js"></script>
 </body>
 </html>
