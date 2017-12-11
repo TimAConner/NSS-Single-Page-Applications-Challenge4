@@ -16,17 +16,20 @@ This was Javascript practice done while attending the [Nashville Software School
   precip is above a certain percentage.
 * The UI should use Bootstrap
 
-OpenWeatherMap API (scroll to bottom to see documentation)
 
-> http://openweathermap.org/api
+## Getting Involved
+1. Weather Underground API
 
-You must sign up to receive an API key
+> https://www.wunderground.com/weather/api
 
-> http://home.openweathermap.org/users/sign_up
+2. Add a file named `apiKey.json` in js/
+3. Structure it like below
+```` 
+{
+    "key": "[yourKey]"
+}
+````
 
-Example of an API call to get a 5-day forecast for 37201
-
-> api.openweathermap.org/data/2.5/weather?zip=37201&APPID=1111111111
 ## Setup to Contribute
 1. Clone
 1. git checkout -b myBranchName
