@@ -4,7 +4,7 @@ let weatherLoader = require('./weatherLoader');
 let weatherView = require('./view.js');
 
 const createWeatherCard = (city, state) => {
-    weatherLoader.loadWeatherData(city, state).then(data => {
+    weatherLoader.getCurrentWeather(city, state).then(data => {
         if(data[0].response.hasOwnProperty("error") || data[1].response.hasOwnProperty("error")){
             weatherView.showAlert();
         } else {
@@ -26,6 +26,29 @@ const createWeatherCard = (city, state) => {
     });  
 };
 
+
+const createYesterdayWeatherCard = (city, state) => {
+    weatherLoader.getYesterdayWeather(city, state).then(data => {
+        if(data[0].response.hasOwnProperty("error")){
+            weatherView.showAlert();
+        } else {
+            weatherView.hideAlert();
+            let observationData = data[0].history.observations[0];
+            let weather = {
+                title: observationData.conds,
+                img: observationData.icon,
+                high: observationData.tempi,
+                low: observationData.tempm,
+                temp: observationData.tempi,
+                humidity: observationData.hum,
+                pressure: observationData.pressurei
+            };
+            weatherView.showWeather(weather);
+        }
+    });  
+};
+
+
 const capitalizeFirstLetter = (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
 };
@@ -33,13 +56,25 @@ const capitalizeFirstLetter = (string) => {
 module.exports.activateDropdown = () => { 
     let dropdown = document.querySelector("#dropdown-menu");
     dropdown.addEventListener("click", () => {
-        let location = document.getElementById("location").value;
-        let locationRegex = new RegExp('(.*), ([A-Z]{2})');
-        let match = location.match(locationRegex);
-        if(match){
-            createWeatherCard(match[2], match[1]);
-        } else {
-            weatherView.showAlert();
+        document.getElementById("forecast-default").textContent = event.target.textContent;
+        if(event.target.id === "forecast-current"){
+            let location = document.getElementById("location").value;
+            let locationRegex = new RegExp('(.*), ([A-Z]{2})');
+            let match = location.match(locationRegex);
+            if(match){
+                createWeatherCard(match[2], match[1]);
+            } else {
+                weatherView.showAlert();
+            }
+        } else if (event.target.id === "forecast-yesterday"){
+            let location = document.getElementById("location").value;
+            let locationRegex = new RegExp('(.*), ([A-Z]{2})');
+            let match = location.match(locationRegex);
+            if(match){
+                createYesterdayWeatherCard(match[2], match[1]);
+            } else {
+                weatherView.showAlert();
+            }
         }
     });
     

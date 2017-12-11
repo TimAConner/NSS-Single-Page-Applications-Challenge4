@@ -1,10 +1,10 @@
 "use strict";
 
-let forecastOptions = {
-    "forecast-16-day": "daily",
-    "forecast-3-day": "forecast", 
-    "forecast-current-day": "weather"   
-};
+// let forecastOptions = {
+//     "forecast-16-day": "forecast10day",
+//     "forecast-3-day": "forecast", 
+//     "forecast-current-day": "weather"   
+// };
 
 // for(property in forecastOptions){
 //     if(property === id){
@@ -12,8 +12,11 @@ let forecastOptions = {
 //     }
 // }
 
+// module.exports.getForecastOption = (string) => {
+//     return x => forecastOptions
+// }
 
-module.exports.loadWeatherData = (state, city) => {
+module.exports.getCurrentWeather = (state, city) => {
 
     return new Promise(function (resolve, reject) {
         let apiKey = loadData("../js/apiKey.json").then(data => {
@@ -22,6 +25,19 @@ module.exports.loadWeatherData = (state, city) => {
             let conditionsForecast = loadData(`http://api.wunderground.com/api/${key}/conditions/q/${state}/${city}.json`);
 
             Promise.all([tenDayForecast, conditionsForecast]).then(data => {
+                resolve(data);
+            });
+        });
+    });
+};
+
+module.exports.getYesterdayWeather = (state, city) => {
+    return new Promise(function (resolve, reject) {
+        let apiKey = loadData("../js/apiKey.json").then(data => {
+            let key = data.key; 
+            let tenDayForecast = loadData(`http://api.wunderground.com/api/${key}/history_19991002/q/${state}/${city}.json`);
+
+            Promise.all([tenDayForecast]).then(data => {
                 resolve(data);
             });
         });
