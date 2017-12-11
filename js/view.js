@@ -6,14 +6,14 @@ module.exports.showWeather = (data) => {
     /* jshint ignore:start */
     // console.log(data);
     /* jshint ignore:end */
-
+    document.getElementById("weather-image").src = `img/weather-icons/animated/${data.img}.svg`;    
     document.getElementById("title").textContent = data.title;
     document.getElementById("description").textContent = data.desc;
     document.getElementById("temp").textContent = `${data.temp}`;
     document.getElementById("low").textContent = `${data.low}`;
     document.getElementById("high").textContent = `${data.high}`;
-    document.getElementById("humidity").textContent = `${data.humidity}%`;
-    document.getElementById("pressure").textContent = `${data.humidity}`;
+    document.getElementById("humidity").textContent = `${data.humidity}`;
+    document.getElementById("pressure").textContent = `${data.pressure}`;
 };
 
 const createTable = () => {

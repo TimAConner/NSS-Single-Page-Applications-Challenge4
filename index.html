@@ -13,10 +13,27 @@
     <main>
         <div class="container">
             <h1 class="text-center">Challenge 4</h1>
+            <div class="input-group w-50">
+                <span class="input-group-addon" id="basic-addon1">Zip Code:</span>
+                <input type="text" class="form-control" placeholder="Zipcode" aria-label="Zipcode" data-fv-zipcode-country="US" data-fv-zipcode="true" aria-describedby="basic-addon1">
+                <div class="input-group-btn" id="dropdown-menu">
+                    <button id="forecast-default" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Forecast
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" id="forecast-current-day" href="#">Current</a>
+                        <a class="dropdown-item" id="forecast-3-day" href="#">3 Day</a>
+                        <a class="dropdown-item" id="forecast-16-day" href="#">16 Day</a>
+                    </div>
+                </div>
+                <!-- <span class="input-group-btn">
+                    <button class="btn btn-secondary" type="button">Go!</button>
+                </span> -->
+            </div>
             <div id="output">
                     <div class="card" style="width: 20rem;">
                         <!-- Weather Animations from https://www.amcharts.com/free-animated-svg-weather-icons/-->
-                        <img class="card-img-top" src="img/weather-icons/animated/cloudy-day-1.svg" alt="Card image cap">
+                        <img id="weather-image" src="" class="card-img-top" alt="Card image cap">
                         <div class="card-body">
                             <div class="temp-grid-box">
                                 <div>
@@ -28,12 +45,12 @@
                         </div>
                         <ul class="list-group list-group-flush">
                             <div>
-                                <li class="list-group-item flex-temps"><span>Low <span class="font-weight-bold" id="low">Dapibus ac facilisis in</span></span> <span> High <span class="font-weight-bold" id="high"></span></span></li>
+                                <li class="list-group-item half-box"><span>Low <span class="font-weight-bold" id="low">Dapibus ac facilisis in</span></span> <span> High <span class="font-weight-bold" id="high"></span></span></li>
                             </div>
-                            <li class="list-group-item flex-temps">
+                            <li class="list-group-item half-box">
                                 <span><img class="small-image" src="img/rain-drop.svg" alt="Rain drop">
                             <span id="humidity"></span></span>
-                            <span><img class="small-image" src="img/temperature.svg" alt="Pressure gauge"><span id="pressure"></span></span></li>
+                            <span><img class="medium-image" src="img/temperature.svg" alt="Pressure gauge"><span id="pressure"></span></span></li>
                         </ul>
                         <!-- <div class="card-body">
                             <a href="#" class="card-link">Card link</a>
@@ -42,7 +59,9 @@
                     </div>
             </div>
             <footer>
-                Rain drop <a href="https://www.flaticon.com/authors/good-ware">Good-Ware</a> from www.flaticon.com 
+                <span>Rain drop by <a href="https://www.flaticon.com/authors/good-ware">Good-Ware</a> from www.flaticon.com </span>
+                <br/>
+                <img alt="Weather Underground Logo" class="weather-underground-image" src="img/weatherUndergroundLogo.png">
             </footer>
         </div>
     </main>

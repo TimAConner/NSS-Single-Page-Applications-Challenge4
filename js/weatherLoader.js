@@ -1,7 +1,35 @@
 "use strict";
-// API Key 0137baa2c4261fcc29b7b716ec3c3843
+// API Key 
 
-module.exports.loadWeatherData = () => {
+let forecastOptions = {
+    "forecast-16-day": "daily",
+    "forecast-3-day": "forecast", 
+    "forecast-current-day": "weather"   
+};
+
+// for(property in forecastOptions){
+//     if(property === id){
+//         go to forecastOptions[property];
+//     }
+// }
+
+
+module.exports.loadWeatherData = (url) => {
+
+    return new Promise(function (resolve, reject) {
+        let apiKey = loadData("../js/apiKey.json").then(data => {
+            let key = data.key; 
+            let tenDayForecast = loadData(`http://api.wunderground.com/api/${key}/forecast10day/q/TN/Nashville.json`);
+            let conditionsForecast = loadData(`http://api.wunderground.com/api/${key}/conditions/q/TN/Nashville.json`);
+
+            Promise.all([tenDayForecast, conditionsForecast]).then(data => {
+                resolve(data);
+            });
+        });
+    });
+};
+
+const loadData = (url) => {
     return new Promise(function (resolve, reject) {
         let xhr =  new XMLHttpRequest();
         xhr.onload = () => {
@@ -14,7 +42,7 @@ module.exports.loadWeatherData = () => {
         xhr.addEventListener("error", function(){
             alert("Sorry!  There was an error.  Please try again later.");
         });
-        xhr.open("GET", "../js/exampleData.json");
+        xhr.open("GET", url);
         xhr.send();
     });
 };

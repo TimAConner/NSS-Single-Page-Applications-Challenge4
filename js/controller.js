@@ -3,23 +3,33 @@
 let weatherLoader = require('./weatherLoader');
 let weatherView = require('./view.js');
 
-module.exports.createPage = () => {
+module.exports.createWeatherCard = () => {
     weatherLoader.loadWeatherData().then(data => {
+        console.log(data);
+        let forecastData = data[0].forecast.simpleforecast.forecastday[0];
+        let conditionData = data[1].current_observation;
         let weather = {
-            title: data.list[0].weather[0].main,
-            desc: capitalize(data.list[0].weather[0].description),
-            high: data.list[0].main.temp_max,
-            low: data.list[0].main.temp_min,
-            temp: data.list[0].main.temp,
-            humidity: data.list[0].main.humidity,
-            pressure: data.list[0].main.pressure
+            title: forecastData.conditions,
+            img: forecastData.icon,
+            // desc: capitalizeFirstLetter(data.list[0].weather[0].description),
+            high: forecastData.high.fahrenheit,
+            low: forecastData.low.fahrenheit,
+            temp: conditionData.temp_f,
+            humidity: conditionData.relative_humidity,
+            pressure: conditionData.pressure_in
         };
         weatherView.showWeather(weather);
-        
-        // weatherView.cre
     });  
 };
 
-const capitalize = (string) => {
+const capitalizeFirstLetter = (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
+};
+
+module.exports.activateDropdown = () => {
+    let dropdown = document.querySelector("#dropdown-menu");
+    dropdown.addEventListener("click", () => {
+
+    });
+    
 };

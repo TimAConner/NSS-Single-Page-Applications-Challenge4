@@ -1,0 +1,26 @@
+footer {
+    margin-top: 2em;
+    text-align: center;
+}
+
+.card-img-top {
+     background-color: lightskyblue;
+ }
+.temp-grid-box {
+    align-items: center;
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+}
+.half-box {
+    align-items: center;
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+.small-image,
+.medium-image {
+    width: 15%;
+}
+
+.weather-underground-image {
+    width: 35%;
+}
