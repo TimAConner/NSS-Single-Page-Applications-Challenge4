@@ -1,5 +1,4 @@
 "use strict";
-// API Key 
 
 let forecastOptions = {
     "forecast-16-day": "daily",
@@ -14,13 +13,13 @@ let forecastOptions = {
 // }
 
 
-module.exports.loadWeatherData = (url) => {
+module.exports.loadWeatherData = (state, city) => {
 
     return new Promise(function (resolve, reject) {
         let apiKey = loadData("../js/apiKey.json").then(data => {
             let key = data.key; 
-            let tenDayForecast = loadData(`http://api.wunderground.com/api/${key}/forecast10day/q/TN/Nashville.json`);
-            let conditionsForecast = loadData(`http://api.wunderground.com/api/${key}/conditions/q/TN/Nashville.json`);
+            let tenDayForecast = loadData(`http://api.wunderground.com/api/${key}/forecast10day/q/${state}/${city}.json`);
+            let conditionsForecast = loadData(`http://api.wunderground.com/api/${key}/conditions/q/${state}/${city}.json`);
 
             Promise.all([tenDayForecast, conditionsForecast]).then(data => {
                 resolve(data);
