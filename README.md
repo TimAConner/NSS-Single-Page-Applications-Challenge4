@@ -4,7 +4,7 @@ This was Javascript practice done while attending the [Nashville Software School
 
 ## Synopsis / Instructions
 
-#### Use the OpenWeather API to build a weather forecast search tool
+#### Use the Weather Underground API to build a weather forecast search tool
 
 * Pick three types of forecasts to choose from
 * User inputs zipcode and selects forecast type from a dropdown
