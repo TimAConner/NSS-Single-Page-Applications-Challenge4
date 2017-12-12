@@ -37,5 +37,5 @@ This was Javascript practice done while attending the [Nashville Software School
 1. Add Gruntfile.js 
 
 ## Non NPM Sources Used
-1. http://openweathermap.org
+1. https://www.wunderground.com/weather/api
 1. https://www.amcharts.com/free-animated-svg-weather-icons/
